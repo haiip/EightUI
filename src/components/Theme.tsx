@@ -3,9 +3,10 @@ import { createText } from "@shopify/restyle";
 const theme = {
   colors: {
     primary: "#2CB9B0",
-    title: "#0C0D34",
+    title: "#E7C06A",
     text: "rgba(12, 13, 52, 0.7)",
     white: "white",
+    grey: "rgba(12, 13, 52, 0.05)",
   },
   spacing: {
     s: 8,
@@ -25,17 +26,24 @@ const theme = {
       fontSize: 28,
       fontFamily: "SFProText-Semibold",
       color: "title",
+      textAlign: "center",
     },
     title2: {
       fontSize: 24,
       lineHeight: 30,
       fontFamily: "SFProText-Semibold",
       color: "title",
+      textAlign: "center",
     },
     body: {
       fontSize: 16,
       lineHeight: 24,
       fontFamily: "SFProText-Regular",
+      color: "text",
+    },
+    button: {
+      fontSize: 16,
+      fontFamily: "SFProText-Medium",
       color: "text",
     },
   },

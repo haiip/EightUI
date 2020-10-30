@@ -1,7 +1,12 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
 import { interpolateColor, useScrollHandler } from "react-native-redash";
-import Animated, { divide, multiply } from "react-native-reanimated";
+import Animated, {
+  divide,
+  Extrapolate,
+  interpolate,
+  multiply,
+} from "react-native-reanimated";
 
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import Subslide from "./Subslide";
@@ -15,6 +20,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
+
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
+    borderBottomRightRadius: BORDER_RADIUS,
+  },
+
+  picture: {
+    ...StyleSheet.absoluteFillObject,
+
+    width: undefined,
+    height: undefined,
+    borderBottomRightRadius: BORDER_RADIUS,
+  },
+
   slider: {
     height: SLIDE_HEIGHT,
 
@@ -47,7 +67,11 @@ const slides = [
     description:
       "Family each ingredient enhances the others; each batch has its own characteristics; and it needs time to simmer to reach full flavor.",
     color: "#BFEAF5",
-    picture: require("../assets/Logo1.png"),
+    picture: {
+      src: require("../assets/Logo1.png"),
+      width: 2513,
+      height: 3583,
+    },
   },
   {
     title: "Tasteful",
@@ -55,7 +79,11 @@ const slides = [
     description:
       " He who controls the spice controls the universe - EightSoups ",
     color: "#BEECC4",
-    picture: require("../assets/spices2.png"),
+    picture: {
+      src: require("../assets/spices2.png"),
+      width: 2500,
+      height: 4000,
+    },
   },
   {
     title: "Healthy",
@@ -63,7 +91,11 @@ const slides = [
     description:
       "“Keeping your body healthy is an expression of gratitude to the whole cosmos- the trees, the clouds, everything.”",
     color: "#FFE4D9",
-    picture: require("../assets/healthy.png"),
+    picture: {
+      src: require("../assets/running.png"),
+      width: 2300,
+      height: 3000,
+    },
   },
   {
     title: "Fast Delivery",
@@ -71,7 +103,11 @@ const slides = [
     description:
       "That doesn't mean we cant deliver fast without hurting the environment  ",
     color: "#FFDDDD",
-    picture: require("../assets/Delivery.png"),
+    picture: {
+      src: require("../assets/Delivery.png"),
+      width: 1757,
+      height: 2551,
+    },
   },
 ];
 
@@ -87,6 +123,23 @@ export const Onboarding = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
+        {slides.map(({ picture }, index) => {
+          const opacity = interpolate(x, {
+            inputRange: [
+              (index - 0.7) * width,
+              index * width,
+              (index + 0.7) * width,
+            ],
+            outputRange: [0, 1, 0],
+            extrapolate: Extrapolate.CLAMP,
+          });
+          return (
+            <Animated.View style={[styles.underlay, { opacity }]} key={index}>
+              <Image source={picture.src} style={styles.picture} />
+            </Animated.View>
+          );
+        })}
+
         <Animated.ScrollView
           ref={scroll}
           horizontal
