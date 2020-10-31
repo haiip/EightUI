@@ -3,7 +3,7 @@ import { createBox, createText } from "@shopify/restyle";
 const theme = {
   colors: {
     primary: "#2CB9B0",
-    title: "rgba(250, 170, 78, 0.911)",
+    secondary: "rgba(250, 170, 78, 0.911)",
     text: "rgba(12, 13, 52, 0.7)",
     button: "#0C0D34",
     white: "white",
@@ -34,14 +34,14 @@ const theme = {
     title1: {
       fontSize: 28,
       fontFamily: "SFProText-Semibold",
-      color: "title",
+      color: "secondary",
       textAlign: "center",
     },
     title2: {
       fontSize: 24,
       lineHeight: 30,
       fontFamily: "SFProText-Semibold",
-      color: "title",
+      color: "secondary",
       textAlign: "center",
     },
     body: {

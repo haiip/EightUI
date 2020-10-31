@@ -1,10 +1,16 @@
 import React from "react";
-import { View } from "react-native";
+import { Button, View } from "react-native";
 
-import { Button, Container, Text } from "../../components";
+import SocialLogin from "../../Authentication/components/SocialLogin";
+import { Container } from "../../components";
 
 const Login = () => {
-  return <Container></Container>;
+  const footer = (
+    <>
+      <SocialLogin />
+    </>
+  );
+  return <Container {...{ footer }}></Container>;
 };
 
 export default Login;

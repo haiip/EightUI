@@ -1,29 +1,38 @@
 import React, { ReactNode } from "react";
 import { Dimensions, Image, StatusBar, StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import theme, { Box } from "./Theme";
 
-export const assets = [require("./assets/patterns/soppa.jpg")];
+export const assets = [require("./assets/patterns/Start.png")];
 const { width } = Dimensions.get("window");
-const aspectRatio = 750 / 1125;
+const aspectRatio = 950 / 1125;
 const height = width * aspectRatio;
 
 interface ContainerProps {
   children: ReactNode;
+  footer: ReactNode;
 }
 
-const Container = ({ children }: ContainerProps) => {
+const Container = ({ children, footer }: ContainerProps) => {
+  const insets = useSafeAreaInsets();
   return (
-    <Box flex={1} backgroundColor="white">
+    <Box flex={1} backgroundColor="secondary">
       <StatusBar barStyle="light-content" />
-      <Box borderBottomLeftRadius="xl" overflow="hidden" height={height * 0.61}>
-        <Image
-          source={assets[0]}
-          style={{
-            width,
-            height,
-            borderBottomLeftRadius: theme.borderRadii.xl,
-          }}
-        />
+      <Box backgroundColor="white">
+        <Box
+          borderBottomLeftRadius="xl"
+          overflow="hidden"
+          height={height * 0.61}
+        >
+          <Image
+            source={assets[0]}
+            style={{
+              width,
+              height,
+              borderBottomLeftRadius: theme.borderRadii.xl,
+            }}
+          />
+        </Box>
       </Box>
       <Box flex={1} overflow="hidden">
         <Image
@@ -44,7 +53,10 @@ const Container = ({ children }: ContainerProps) => {
           {children}
         </Box>
       </Box>
-      <Box height={200} backgroundColor=""></Box>
+      <Box backgroundColor="secondary" paddingTop="m">
+        {footer}
+        <Box height={insets.bottom} />
+      </Box>
     </Box>
   );
 };

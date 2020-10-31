@@ -1,10 +1,8 @@
 import * as React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider } from "@shopify/restyle";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { Onboarding } from "./src/Onboarding";
 import { LoadAssets, theme } from "./src/components";
-import { Welcome } from "./src/Welcome";
 
 import {
   assets as AuthenticationAssets,
@@ -24,7 +22,9 @@ export default function App() {
   return (
     <ThemeProvider {...{ theme, assets }}>
       <LoadAssets {...{ fonts }}>
-        <AuthenticationNavigator />
+        <SafeAreaProvider>
+          <AuthenticationNavigator />
+        </SafeAreaProvider>
       </LoadAssets>
     </ThemeProvider>
   );
