@@ -37,7 +37,7 @@ const Sublide = ({ subtitle, description, last, onPress }: SublideProps) => {
         {description}
       </Text>
       <Button
-        label={last ? "Let's Order!" : "Next"}
+        label={last ? "Awesome!" : "Next"}
         variant={last ? "primary" : "default"}
         {...{ onPress }}
       />

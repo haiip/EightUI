@@ -16,16 +16,21 @@ const styles = StyleSheet.create({
 });
 
 interface ButtonProps {
-  variant: "default" | "primary";
-  label?: string;
+  variant: "default" | "primary" | "transparent";
+  label: string;
   onPress: () => void;
 }
 
 const Button = ({ variant, label, onPress }: ButtonProps) => {
   const theme = useTheme();
   const backgroundColor =
-    variant === "primary" ? theme.colors.primary : theme.colors.grey;
-  const color = variant === "primary" ? theme.colors.white : theme.colors.text;
+    variant === "primary"
+      ? theme.colors.primary
+      : variant === "transparent"
+      ? "transparent"
+      : theme.colors.grey;
+  const color =
+    variant === "primary" ? theme.colors.white : theme.colors.button;
   return (
     <RectButton
       style={[styles.container, { backgroundColor }]}

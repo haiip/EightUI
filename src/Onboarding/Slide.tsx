@@ -1,28 +1,13 @@
 import React from "react";
-import {
-  View,
-  Dimensions,
-  StyleSheet,
-  Image,
-  ImageRequireSource,
-} from "react-native";
+import { View, Dimensions, StyleSheet } from "react-native";
 
-import { Text } from "../components/Theme";
+import theme, { Text } from "../components/Theme";
 const { width, height } = Dimensions.get("window");
 
 export const SLIDE_HEIGHT = 0.61 * height;
-export const BORDER_RADIUS = 75;
 const styles = StyleSheet.create({
   container: {
     width,
-  },
-
-  picture: {
-    ...StyleSheet.absoluteFillObject,
-
-    width: undefined,
-    height: undefined,
-    borderBottomRightRadius: BORDER_RADIUS,
   },
 
   TitleContainer: {
