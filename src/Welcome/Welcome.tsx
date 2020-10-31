@@ -1,3 +1,4 @@
+import { StackNavigationProps, Routes } from "@react-navigation/stack";
 import React from "react";
 import { Image, Dimensions } from "react-native";
 import { Button } from "../components";
@@ -12,7 +13,9 @@ const picture = {
 
 export const assets = [picture.src];
 
-export const Welcome = () => {
+export const Welcome = ({
+  navigation,
+}: StackNavigationProps<Routes, "Welcome">) => {
   return (
     <Box flex={1} backgroundColor="white">
       <Box
@@ -52,7 +55,11 @@ export const Welcome = () => {
           <Text variant="body" textAlign="center">
             Login in to your account or signup for a better experience
           </Text>
-          <Button variant="primary" label="Already a member" />
+          <Button
+            variant="primary"
+            label="Already a member"
+            onPress={() => navigation.navigate("Login")}
+          />
           <Button label="Join us it's free" />
           <Button variant="transparent" label="Forgot Password" />
         </Box>
