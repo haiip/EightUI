@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import theme, { Box } from "../Theme";
+import React from "react";
+import { Box, useTheme } from "../Theme";
 import {
   TextInput as FORMTextInput,
   StyleSheet,
@@ -12,9 +12,10 @@ interface TextInputProps extends FORMTextInputProps {
   touched?: boolean;
   error?: string;
 }
-const SIZE = theme.borderRadii.m * 2;
 
 const TextInput = ({ icon, touched, error, ...props }: TextInputProps) => {
+  const theme = useTheme();
+  const SIZE = theme.borderRadii.m * 2;
   const Recolor = !touched ? "text" : error ? "danger" : "primary";
   const color = theme.colors[Recolor];
 

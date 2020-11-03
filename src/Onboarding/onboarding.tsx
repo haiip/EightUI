@@ -11,17 +11,17 @@ import Animated, {
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
-import { theme } from "../components";
+import { useTheme } from "../components";
 import { Routes, StackNavigationProp } from "./../components/Navigation";
+import { makeStyles, Theme } from "../components/Theme";
 
 const { width } = Dimensions.get("window");
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: theme.colors.background,
   },
-
   underlay: {
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
@@ -29,21 +29,18 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: theme.borderRadii.xl,
     overflow: "hidden",
   },
-
   slider: {
     height: SLIDE_HEIGHT,
     borderBottomRightRadius: theme.borderRadii.xl,
   },
-
   footer: {
     flex: 1,
   },
   footerContent: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: theme.colors.background,
     borderTopLeftRadius: theme.borderRadii.xl,
   },
-
   pagination: {
     ...StyleSheet.absoluteFillObject,
     height: theme.borderRadii.xl,
@@ -51,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-});
+}));
 
 const slides = [
   {
@@ -109,6 +106,8 @@ export const assets = slides.map((slide) => slide.picture.src);
 export const Onboarding = ({
   navigation,
 }: StackNavigationProp<Routes, "Onboarding">) => {
+  const styles = useStyles();
+  const theme = useTheme();
   const scroll = useRef<Animated.ScrollView>(null);
 
   // TODO scrollHandler useScrollHandler?
