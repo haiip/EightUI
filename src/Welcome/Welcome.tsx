@@ -21,7 +21,7 @@ export const Welcome = ({
       <Box
         flex={1}
         borderBottomRightRadius="xl"
-        backgroundColor="grey"
+        backgroundColor="button1"
         alignItems="center"
         justifyContent="flex-end"
       >

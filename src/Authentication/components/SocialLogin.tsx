@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import theme, { Box } from "../../components/Theme";
 

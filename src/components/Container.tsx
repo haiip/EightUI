@@ -3,7 +3,7 @@ import { Dimensions, Image, StatusBar, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import theme, { Box } from "./Theme";
 
-export const assets = [require("./assets/patterns/Start.png")];
+export const assets = [require("./assets/patterns/start2.png")];
 const { width } = Dimensions.get("window");
 const aspectRatio = 950 / 1125;
 const height = width * aspectRatio;
