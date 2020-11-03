@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 interface ButtonProps {
-  variant: "default" | "primary" | "transparent";
+  variant: "default" | "primary" | "transparent" | "button1";
   label?: string;
   onPress: () => void;
   children?: ReactNode;
