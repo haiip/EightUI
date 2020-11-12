@@ -27,6 +27,7 @@ const Dot = ({ index, currentIndex }: DotProps) => {
         borderRadius: 4,
         margin: 8,
         transform: [{ scale }],
+        alignItems: "center",
       }}
     />
   );

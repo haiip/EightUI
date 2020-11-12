@@ -15,7 +15,7 @@ interface TextInputProps extends FORMTextInputProps {
 
 const TextInput = ({ icon, touched, error, ...props }: TextInputProps) => {
   const theme = useTheme();
-  const SIZE = theme.borderRadii.m * 2;
+  const SIZE = theme.borderRadii.m * 2.5;
   const Recolor = !touched ? "text" : error ? "danger" : "primary";
   const color = theme.colors[Recolor];
 
@@ -28,8 +28,8 @@ const TextInput = ({ icon, touched, error, ...props }: TextInputProps) => {
       borderWidth={StyleSheet.hairlineWidth}
       borderColor={Recolor}
     >
-      <Box padding="s">
-        <Icon name={icon} size={16} {...{ color }} />
+      <Box padding="m">
+        <Icon name={icon} size={20} {...{ color }} />
       </Box>
       <Box flex={1}>
         <FORMTextInput
@@ -43,12 +43,17 @@ const TextInput = ({ icon, touched, error, ...props }: TextInputProps) => {
         <Box
           height={SIZE}
           width={SIZE}
-          borderRadius="xl"
           justifyContent="center"
           alignItems="center"
           backgroundColor={!error ? "primary" : "danger"}
+          style={{ borderRadius: SIZE / 2 }}
         >
-          <Icon name={!error ? "check" : "x"} color="white" size={12} />
+          <Icon
+            name={!error ? "check" : "x"}
+            color="white"
+            size={16}
+            style={{ textAlign: "center" }}
+          />
         </Box>
       )}
     </Box>
